@@ -1,9 +1,9 @@
-import 'package:apple_pay_flutter/apple_pay_flutter.dart';
-import 'package:apple_pay_flutter/models/app_pay_config.dart';
-import 'package:apple_pay_flutter/models/enums/enums.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:tap_apple_pay_flutter/models/models.dart';
+import 'package:tap_apple_pay_flutter/tap_apple_pay_flutter.dart';
 
 enum TokenType { applePayToken, tapToken }
 
@@ -47,7 +47,7 @@ class _MainPageState extends State<MainPage> {
       {String sandboxKey = "pk_test_Vlk842B1EA7tDN5QbrfGjYzh",
       String productionKey = "pk_live_UYnihb8dtBXm9fDSw1kFlPQA",
       required SdkMode sdkMode}) async {
-    ApplePayFlutter.setupApplePayConfiguration(
+    TapApplePayFlutter.setupApplePayConfiguration(
       sandboxKey: sandboxKey,
       productionKey: productionKey,
       sdkMode: sdkMode,
@@ -56,7 +56,7 @@ class _MainPageState extends State<MainPage> {
       setState(() {
         loading = true;
       });
-      var result = await ApplePayFlutter.setupApplePay;
+      var result = await TapApplePayFlutter.setupApplePay;
       debugPrint("Result of setup apple pay >>>>>>> $result");
       setState(() {
         loading = false;
@@ -68,7 +68,7 @@ class _MainPageState extends State<MainPage> {
 
   Future<void> getApplePayToken() async {
     try {
-      var result = await ApplePayFlutter.getApplePayToken(
+      var result = await TapApplePayFlutter.getApplePayToken(
         config: ApplePayConfig(
           sandboxKey: "pk_test_VivNz3uyZaR6TdIqOB1DHeh0",
           productionKey: "pk_live_0KwGvzbxL4ABRHXydMjp27an",
@@ -102,7 +102,7 @@ class _MainPageState extends State<MainPage> {
 
   Future<void> getTapTokenToken() async {
     try {
-      var result = await ApplePayFlutter.getTapToken(
+      var result = await TapApplePayFlutter.getTapToken(
         config: ApplePayConfig(
           sandboxKey: "pk_test_Vlk842B1EA7tDN5QbrfGjYzh",
           productionKey: "pk_live_UYnihb8dtBXm9fDSw1kFlPQA",
@@ -164,7 +164,7 @@ class _MainPageState extends State<MainPage> {
                   keyboardType:
                       const TextInputType.numberWithOptions(decimal: true),
                   inputFormatters: <TextInputFormatter>[
-                    FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
+                    FilteringTextInputFormatter.allow(RegExp(r"[0-9.]")),
                   ],
                   decoration: const InputDecoration(
                       border: OutlineInputBorder(),
@@ -253,7 +253,7 @@ class _MainPageState extends State<MainPage> {
                 height: 45,
                 child: loading
                     ? const CupertinoActivityIndicator()
-                    : ApplePayFlutter.buildApplePayButton(
+                    : TapApplePayFlutter.buildApplePayButton(
                         applePayButtonType: ApplePayButtonType.appleLogoOnly,
                         applePayButtonStyle: ApplePayButtonStyle.black,
                         config: ApplePayConfig(

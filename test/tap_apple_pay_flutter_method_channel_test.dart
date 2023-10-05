@@ -1,12 +1,12 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:apple_pay_flutter/apple_pay_flutter_method_channel.dart';
+import 'package:tap_apple_pay_flutter/tap_apple_pay_flutter_method_channel.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
-  MethodChannelApplePayFlutter platform = MethodChannelApplePayFlutter();
-  const MethodChannel channel = MethodChannel('apple_pay_flutter');
+  MethodChannelTapApplePayFlutter platform = MethodChannelTapApplePayFlutter();
+  const MethodChannel channel = MethodChannel('tap_apple_pay_flutter');
 
   setUp(() {
     TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger.setMockMethodCallHandler(

@@ -1,5 +1,6 @@
-import 'package:apple_pay_flutter/models/enums/enums.dart';
+
 import 'package:flutter/material.dart';
+import 'package:tap_apple_pay_flutter/models/models.dart';
 
 import 'main_page.dart';
 

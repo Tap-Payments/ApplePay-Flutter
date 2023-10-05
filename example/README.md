@@ -1,6 +1,6 @@
-# apple_pay_flutter_example
+# tap_apple_pay_flutter_example
 
-Demonstrates how to use the apple_pay_flutter plugin.
+Demonstrates how to use the tap_apple_pay_flutter plugin.
 
 ## Getting Started
 

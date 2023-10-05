@@ -1,5 +1,5 @@
-name: apple_pay_flutter
-description: Accept apple pay payments in Flutter
+name: tap_apple_pay_flutter
+description: Accept apple pay payments in Flutter.
 version: 1.0.0
 homepage: https://github.com/Tap-Payments/ApplePay-Flutter
 
@@ -34,11 +34,8 @@ flutter:
   # adding or updating assets for this project.
   plugin:
     platforms:
-      android:
-        package: tap.company.apple_pay_flutter
-        pluginClass: ApplePayFlutterPlugin
       ios:
-        pluginClass: ApplePayFlutterPlugin
+        pluginClass: TapApplePayFlutterPlugin
 
   # To add assets to your plugin package, add an assets section, like this:
   # assets:

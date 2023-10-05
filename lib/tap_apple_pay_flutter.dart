@@ -1,9 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
 import 'models/models.dart';
 
-class ApplePayFlutter {
+class TapApplePayFlutter {
   static const MethodChannel _channel = MethodChannel('apple_pay_flutter');
 
   static Future<dynamic> get setupApplePay async {

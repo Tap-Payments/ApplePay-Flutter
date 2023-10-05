@@ -146,13 +146,13 @@
       "languageVersion": "3.1"
     },
     {
-      "name": "apple_pay_flutter",
+      "name": "tap_apple_pay_flutter",
       "rootUri": "../",
       "packageUri": "lib/",
       "languageVersion": "3.1"
     }
   ],
-  "generated": "2023-10-05T10:14:14.301788Z",
+  "generated": "2023-10-05T12:24:29.445699Z",
   "generator": "pub",
   "generatorVersion": "3.1.3"
 }

@@ -1,13 +1,13 @@
 #
 # To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html.
-# Run `pod lib lint apple_pay_flutter.podspec` to validate before publishing.
+# Run `pod lib lint tap_apple_pay_flutter.podspec` to validate before publishing.
 #
 Pod::Spec.new do |s|
-  s.name             = 'apple_pay_flutter'
-  s.version          = '0.0.1'
-  s.summary          = 'A new Flutter project.'
+  s.name             = 'tap_apple_pay_flutter'
+  s.version          = '1.0.0'
+  s.summary          = 'Accept apple pay payments in Flutter.'
   s.description      = <<-DESC
-A new Flutter project.
+Accept apple pay payments in Flutter.
                        DESC
   s.homepage         = 'https://tap.company'
   s.license          = { :file => '../LICENSE' }

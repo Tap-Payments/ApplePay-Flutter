@@ -2,7 +2,7 @@ import Flutter
 import UIKit
 import XCTest
 
-@testable import apple_pay_flutter
+@testable import tap_apple_pay_flutter
 
 // This demonstrates a simple unit test of the Swift portion of this plugin's implementation.
 //
@@ -11,7 +11,7 @@ import XCTest
 class RunnerTests: XCTestCase {
 
   func testGetPlatformVersion() {
-    let plugin = ApplePayFlutterPlugin()
+    let plugin = TapApplePayFlutterPlugin()
 
     let call = FlutterMethodCall(methodName: "getPlatformVersion", arguments: [])
 
