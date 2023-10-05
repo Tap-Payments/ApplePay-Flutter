@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -43,10 +42,11 @@ class _MainPageState extends State<MainPage> {
 
   bool loading = false;
 
-  Future<void> setupApplePay(
-      {String sandboxKey = "pk_test_Vlk842B1EA7tDN5QbrfGjYzh",
-      String productionKey = "pk_live_UYnihb8dtBXm9fDSw1kFlPQA",
-      required SdkMode sdkMode}) async {
+  Future<void> setupApplePay({
+    String sandboxKey = "pk_test_Vlk842B1EA7tDN5QbrfGjYzh",
+    String productionKey = "pk_live_UYnihb8dtBXm9fDSw1kFlPQA",
+    required SdkMode sdkMode,
+  }) async {
     TapApplePayFlutter.setupApplePayConfiguration(
       sandboxKey: sandboxKey,
       productionKey: productionKey,
@@ -58,6 +58,7 @@ class _MainPageState extends State<MainPage> {
       });
       var result = await TapApplePayFlutter.setupApplePay;
       debugPrint("Result of setup apple pay >>>>>>> $result");
+
       setState(() {
         loading = false;
       });
@@ -70,16 +71,13 @@ class _MainPageState extends State<MainPage> {
     try {
       var result = await TapApplePayFlutter.getApplePayToken(
         config: ApplePayConfig(
-          sandboxKey: "pk_test_VivNz3uyZaR6TdIqOB1DHeh0",
-          productionKey: "pk_live_0KwGvzbxL4ABRHXydMjp27an",
           transactionCurrency: selectedCurrencyCode,
           allowedCardNetworks: [
             AllowedCardNetworks.AMEX,
             AllowedCardNetworks.VISA,
             AllowedCardNetworks.MASTERCARD,
           ],
-          environmentMode: widget.sdkMode,
-          merchantId: "merchant.tap.gosell",
+          applePayMerchantId: "merchant.tap.gosell",
           amount: amountController.text.isEmpty
               ? 111
               : double.parse(amountController.text),
@@ -104,16 +102,13 @@ class _MainPageState extends State<MainPage> {
     try {
       var result = await TapApplePayFlutter.getTapToken(
         config: ApplePayConfig(
-          sandboxKey: "pk_test_Vlk842B1EA7tDN5QbrfGjYzh",
-          productionKey: "pk_live_UYnihb8dtBXm9fDSw1kFlPQA",
           transactionCurrency: selectedCurrencyCode,
           allowedCardNetworks: [
             AllowedCardNetworks.AMEX,
             AllowedCardNetworks.VISA,
             AllowedCardNetworks.MASTERCARD,
           ],
-          environmentMode: widget.sdkMode,
-          merchantId: "merchant.tap.gosell",
+          applePayMerchantId: "merchant.tap.gosell",
           amount: amountController.text.isEmpty
               ? 111
               : double.parse(amountController.text),
@@ -249,42 +244,20 @@ class _MainPageState extends State<MainPage> {
               const SizedBox(
                 height: 20,
               ),
-              SizedBox(
-                height: 45,
-                child: loading
-                    ? const CupertinoActivityIndicator()
-                    : TapApplePayFlutter.buildApplePayButton(
-                        applePayButtonType: ApplePayButtonType.appleLogoOnly,
-                        applePayButtonStyle: ApplePayButtonStyle.black,
-                        config: ApplePayConfig(
-                          sandboxKey: "pk_test_Vlk842B1EA7tDN5QbrfGjYzh",
-                          productionKey: "pk_live_UYnihb8dtBXm9fDSw1kFlPQA",
-                          transactionCurrency: selectedCurrencyCode,
-                          allowedCardNetworks: [
-                            AllowedCardNetworks.AMEX,
-                            AllowedCardNetworks.VISA,
-                            AllowedCardNetworks.MASTERCARD,
-                          ],
-                          environmentMode: widget.sdkMode,
-                          merchantId: "merchant.tap.gosell",
-                          amount: amountController.text.isEmpty
-                              ? 111
-                              : double.parse(amountController.text),
-                          merchantCapabilities: [
-                            MerchantCapabilities.ThreeDS,
-                            MerchantCapabilities.Debit,
-                            MerchantCapabilities.Credit,
-                          ],
-                        ),
-                        onPress: () {
-                          if (tokenType == TokenType.tapToken) {
-                            getTapTokenToken();
-                          } else {
-                            getApplePayToken();
-                          }
-                        },
-                      ),
-              ),
+              loading
+                  ? const CupertinoActivityIndicator()
+                  : TapApplePayFlutter.buildApplePayButton(
+                      applePayButtonType: ApplePayButtonType.appleLogoOnly,
+                      applePayButtonStyle: ApplePayButtonStyle.black,
+                      onPress: () {
+                        debugPrint("Apple Button Clicked");
+                        if (tokenType == TokenType.tapToken) {
+                          getTapTokenToken();
+                        } else {
+                          getApplePayToken();
+                        }
+                      },
+                    ),
               Expanded(
                 child: Center(
                   child: Padding(

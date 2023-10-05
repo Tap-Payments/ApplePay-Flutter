@@ -39,7 +39,7 @@ class TapApplePayFlutter {
           "transactionCurrency": config.transactionCurrency.name,
           "allowedCardNetworks":
               config.allowedCardNetworks.map((e) => e.name).toList(),
-          "merchantId": config.merchantId,
+          "merchantId": config.applePayMerchantId,
           "amount": config.amount,
           "merchantCapabilities":
               config.merchantCapabilities.map((e) => e.name).toList()
@@ -63,7 +63,7 @@ class TapApplePayFlutter {
           "transactionCurrency": config.transactionCurrency.name,
           "allowedCardNetworks":
               config.allowedCardNetworks.map((e) => e.name).toList(),
-          "merchantId": config.merchantId,
+          "merchantId": config.applePayMerchantId,
           "amount": config.amount,
           "merchantCapabilities":
               config.merchantCapabilities.map((e) => e.name).toList()
@@ -93,7 +93,6 @@ class TapApplePayFlutter {
   static Widget buildApplePayButton({
     required ApplePayButtonType applePayButtonType,
     required ApplePayButtonStyle applePayButtonStyle,
-    required ApplePayConfig config,
     required Function()? onPress,
   }) {
     if (defaultTargetPlatform == TargetPlatform.android) {
@@ -107,7 +106,6 @@ class TapApplePayFlutter {
           _ApplePayFlutter(
             applePayButtonType: applePayButtonType,
             applePayButtonStyle: applePayButtonStyle,
-            config: config,
           ),
           SizedBox(
             height: 50,
@@ -125,13 +123,11 @@ class TapApplePayFlutter {
 class _ApplePayFlutter extends StatefulWidget {
   final ApplePayButtonType applePayButtonType;
   final ApplePayButtonStyle applePayButtonStyle;
-  final ApplePayConfig config;
 
   const _ApplePayFlutter({
     super.key,
     required this.applePayButtonType,
     required this.applePayButtonStyle,
-    required this.config,
   });
 
   @override
@@ -187,16 +183,6 @@ class _ApplePayFlutterState extends State<_ApplePayFlutter> {
       creationParams: {
         'buttonType': buttonType,
         'buttonStyle': widget.applePayButtonStyle.name,
-        "sandboxKey": widget.config.sandboxKey,
-        "productionKey": widget.config.productionKey,
-        "transactionCurrency": widget.config.transactionCurrency.name,
-        "allowedCardNetworks":
-            widget.config.allowedCardNetworks.map((e) => e.name).toList(),
-        "environmentMode": widget.config.environmentMode.name,
-        "merchantId": widget.config.merchantId,
-        "amount": widget.config.amount,
-        "merchantCapabilities":
-            widget.config.merchantCapabilities.map((e) => e.name).toList()
       },
       layoutDirection: TextDirection.ltr,
       creationParamsCodec: const StandardMessageCodec(),

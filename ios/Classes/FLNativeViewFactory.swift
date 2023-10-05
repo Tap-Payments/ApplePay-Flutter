@@ -68,54 +68,11 @@ class FLNativeView: NSObject, FlutterPlatformView {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(300)){
             self.tapApplePayButton = TapApplePayButton(frame: .init(x: 0, y: 0, width: self._view.frame.width, height: self._view.frame.height))
-            var allowedNetworks:[TapApplePayPaymentNetwork] = []
-            if let passedAllowedNetworks:[String] = self._args?["allowedCardNetworks"] as? [String] {
-                
-                  passedAllowedNetworks.forEach({ networkString in
-                    if let networkEnum:TapApplePayPaymentNetwork = TapApplePayPaymentNetwork(rawValue: networkString.lowercased()) {
-                      allowedNetworks.append(networkEnum)
-                    }
-                  })
-                }
-            
-            var allowedCapabilities:PKMerchantCapability = []
-            if let passedCapabilities:[String] = self._args?["merchantCapabilities"] as? [String] {
-                  passedCapabilities.forEach({ capabilityString in
-                    if capabilityString.lowercased() == "threeds" {
-                      allowedCapabilities.insert(.threeDSecure)
-                    }else if capabilityString.lowercased() == "credit" {
-                      allowedCapabilities.insert(.credit)
-                    }else if capabilityString.lowercased() == "debit" {
-                      allowedCapabilities.insert(.debit)
-                    }
-                  })
-                }
-            
-            self.myTapApplePayRequest.build(paymentNetworks: allowedNetworks, paymentItems: [], paymentAmount:self._args?["amount"] as? Double ?? 1, currencyCode: TapCurrencyCode(appleRawValue: self._args?["transactionCurrency"] as? String ?? "USD") ?? .USD,merchantID:self._args?["merchantId"] as? String ?? "merchant.tap.gosell", merchantCapabilities: allowedCapabilities)
-
-            self.tapApplePayButton.setup(buttonType:TapApplePayButtonType(rawValue: self._args?["buttonType"] as? String ?? "plain") ?? .AppleLogoOnly)
-            self.tapApplePayButton.dataSource = self
-            self.tapApplePayButton.delegate   = self
+           
+            self.tapApplePayButton.setup(buttonType:TapApplePayButtonType(rawValue: self._args?["buttonType"] as? String ?? "plain") ?? .AppleLogoOnly,buttonStyle: .init(rawValue: self._args?["buttonStyle"] as? String ?? "black") ?? .Black)
+           
             self._view.addSubview(self.tapApplePayButton)
             }
 
-    }
-}
-
-// Implement the delegates and the data sources needed methods
-extension FLNativeView:TapApplePayButtonDataSource,TapApplePayButtonDelegate {
-  // You have to return the TapApplePayRequest which we defined up, to start the apple pay process
-    var tapApplePayRequest: TapApplePayRequest {
-        return myTapApplePayRequest
-    }
-    
-    func tapApplePayValidationError(error: TapApplePayKit_iOS.TapApplePayRequestValidationError) {
-    print("ERROR")
-    }
-    
-    
-    
-    func tapApplePayFinished(with tapAppleToken: TapApplePayToken) {
-        print("I can do whatever i want with the result token")
     }
 }

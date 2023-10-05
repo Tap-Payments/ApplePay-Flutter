@@ -33,6 +33,15 @@
       <excludeFolder url="file://$MODULE_DIR$/example/ios/.symlinks/plugins/apple_pay_flutter/example/ios/.symlinks/plugins/integration_test/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/example/ios/.symlinks/plugins/apple_pay_flutter/example/ios/.symlinks/plugins/integration_test/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/example/ios/.symlinks/plugins/apple_pay_flutter/example/ios/.symlinks/plugins/integration_test/build" />
+      <excludeFolder url="file://$MODULE_DIR$/example/ios/.symlinks/plugins/tap_apple_pay_flutter/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/example/ios/.symlinks/plugins/tap_apple_pay_flutter/build" />
+      <excludeFolder url="file://$MODULE_DIR$/example/ios/.symlinks/plugins/tap_apple_pay_flutter/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/example/ios/.symlinks/plugins/tap_apple_pay_flutter/example/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/example/ios/.symlinks/plugins/tap_apple_pay_flutter/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/example/ios/.symlinks/plugins/tap_apple_pay_flutter/example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/example/ios/.symlinks/plugins/tap_apple_pay_flutter/example/ios/.symlinks/plugins/tap_apple_pay_flutter/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/example/ios/.symlinks/plugins/tap_apple_pay_flutter/example/ios/.symlinks/plugins/tap_apple_pay_flutter/build" />
+      <excludeFolder url="file://$MODULE_DIR$/example/ios/.symlinks/plugins/tap_apple_pay_flutter/example/ios/.symlinks/plugins/tap_apple_pay_flutter/.dart_tool" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
