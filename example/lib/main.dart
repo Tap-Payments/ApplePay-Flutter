@@ -44,7 +44,6 @@ class SDKModePage extends StatelessWidget {
           children: [
             FilledButton(
               onPressed: () {
-                print("Clicked");
                 Navigator.push(
                   context,
                   MaterialPageRoute(

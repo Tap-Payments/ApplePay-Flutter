@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:tap_apple_pay_flutter/models/models.dart';
+
 import 'package:tap_apple_pay_flutter/tap_apple_pay_flutter.dart';
 
 enum TokenType { applePayToken, tapToken }
@@ -20,6 +21,7 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   TextEditingController amountController = TextEditingController();
+
   List<TapCurrencyCode> currencyList = [
     TapCurrencyCode.SAR,
     TapCurrencyCode.USD,
@@ -50,15 +52,15 @@ class _MainPageState extends State<MainPage> {
     TapApplePayFlutter.setupApplePayConfiguration(
       sandboxKey: sandboxKey,
       productionKey: productionKey,
-      sdkMode: sdkMode,
+      sdkMode: widget.sdkMode,
     );
     try {
       setState(() {
         loading = true;
       });
       var result = await TapApplePayFlutter.setupApplePay;
-      debugPrint("Result of setup apple pay >>>>>>> $result");
 
+      debugPrint("Setup apple pay result >>> $result");
       setState(() {
         loading = false;
       });
@@ -98,7 +100,7 @@ class _MainPageState extends State<MainPage> {
     }
   }
 
-  Future<void> getTapTokenToken() async {
+  Future<void> getTapToken() async {
     try {
       var result = await TapApplePayFlutter.getTapToken(
         config: ApplePayConfig(
@@ -203,43 +205,46 @@ class _MainPageState extends State<MainPage> {
               const SizedBox(
                 height: 20,
               ),
-              SegmentedButton<TokenType>(
-                segments: const <ButtonSegment<TokenType>>[
-                  ButtonSegment<TokenType>(
-                    value: TokenType.applePayToken,
-                    label: Text(
-                      'Generate Apple Pay Token',
-                      style: TextStyle(
-                        fontSize: 12,
+              SizedBox(
+                width: double.infinity,
+                child: SegmentedButton<TokenType>(
+                  segments: const <ButtonSegment<TokenType>>[
+                    ButtonSegment<TokenType>(
+                      value: TokenType.applePayToken,
+                      label: Text(
+                        'Generate Apple Pay Token',
+                        style: TextStyle(
+                          fontSize: 12,
+                        ),
+                      ),
+                    ),
+                    ButtonSegment<TokenType>(
+                      value: TokenType.tapToken,
+                      label: Text(
+                        'Generate Tap Token',
+                        style: TextStyle(
+                          fontSize: 12,
+                        ),
+                      ),
+                    ),
+                  ],
+                  style: ButtonStyle(
+                    shape: MaterialStateProperty.all(
+                      const RoundedRectangleBorder(
+                        side: BorderSide(
+                          width: 0.1,
+                          color: Colors.black,
+                        ),
                       ),
                     ),
                   ),
-                  ButtonSegment<TokenType>(
-                    value: TokenType.tapToken,
-                    label: Text(
-                      'Generate Tap Token',
-                      style: TextStyle(
-                        fontSize: 12,
-                      ),
-                    ),
-                  ),
-                ],
-                style: ButtonStyle(
-                  shape: MaterialStateProperty.all(
-                    const RoundedRectangleBorder(
-                      side: BorderSide(
-                        width: 0.1,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ),
+                  selected: <TokenType>{tokenType},
+                  onSelectionChanged: (Set<TokenType> newSelection) {
+                    setState(() {
+                      tokenType = newSelection.first;
+                    });
+                  },
                 ),
-                selected: <TokenType>{tokenType},
-                onSelectionChanged: (Set<TokenType> newSelection) {
-                  setState(() {
-                    tokenType = newSelection.first;
-                  });
-                },
               ),
               const SizedBox(
                 height: 20,
@@ -252,7 +257,7 @@ class _MainPageState extends State<MainPage> {
                       onPress: () {
                         debugPrint("Apple Button Clicked");
                         if (tokenType == TokenType.tapToken) {
-                          getTapTokenToken();
+                          getTapToken();
                         } else {
                           getApplePayToken();
                         }

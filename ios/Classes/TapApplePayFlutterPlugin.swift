@@ -71,8 +71,6 @@ public class TapApplePayFlutterPlugin: NSObject, FlutterPlugin {
                    resultMap["sdk_result"] = "SUCCESS"
                    resultMap["trx_mode"] = "TOKENIZE"
 
-
-
                    result(["success":true,"data":resultMap])
                        }, onErrorOccured: { (session, result1, error) in
 

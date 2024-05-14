@@ -7,7 +7,6 @@ import PassKit
 class FLNativeViewFactory: NSObject, FlutterPlatformViewFactory {
     private var messenger: FlutterBinaryMessenger
     
-   
 
     init(messenger: FlutterBinaryMessenger) {
         self.messenger = messenger
@@ -62,10 +61,7 @@ class FLNativeView: NSObject, FlutterPlatformView {
     func createNativeView(view _view: UIView){
         _view.backgroundColor = UIColor.clear
        
-    
-        
-              
-        
+
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(300)){
             self.tapApplePayButton = TapApplePayButton(frame: .init(x: 0, y: 0, width: self._view.frame.width, height: self._view.frame.height))
            
