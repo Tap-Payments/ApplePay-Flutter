@@ -18,6 +18,13 @@ In your library add the following import:
 import 'package:tap_apple_pay_flutter/models/models.dart';
 ```
 
+Then execute this in flutter terminal:
+```
+cd ios
+pod install
+pod update
+```
+
 ## Minimum requirements
 1. Dart version 3.0.0 +
 2. Flutter version 3.0.0 +
