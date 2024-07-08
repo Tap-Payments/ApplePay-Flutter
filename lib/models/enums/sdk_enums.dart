@@ -1,3 +1,4 @@
+/// ALL Allowed Card Networks
 enum AllowedCardNetworks {
   AMEX,
   CARTESBANCAIRES,
@@ -17,6 +18,7 @@ enum AllowedCardNetworks {
   MADA,
 }
 
+/// ALL Merchant Capabilities
 enum MerchantCapabilities {
   ThreeDS,
   Credit,
@@ -24,21 +26,30 @@ enum MerchantCapabilities {
   EMV,
 }
 
+/// SDK modes
+/// Sandbox for testing environment
+/// Production for release environment
+
 enum SdkMode {
   production,
   sandbox,
 }
 
+/// Apple pay button pre-defined types
+/// We can select any one
 enum ApplePayButtonType {
-  appleLogoOnly, // = 'plain',
-  buyWithApplePay, // = 'buy',
-  setupApplePay, // = 'setup',
-  payWithApplePay, // = 'pay',
-  donateWithApplePay, // = 'donate',
-  checkoutWithApplePay, // = 'checkout',
-  bookWithApplePay, // = 'book',
-  subscribeWithApplePay, // = 'subscribe',
+  appleLogoOnly,
+  buyWithApplePay,
+  setupApplePay,
+  payWithApplePay,
+  donateWithApplePay,
+  checkoutWithApplePay,
+  bookWithApplePay,
+  subscribeWithApplePay,
 }
+
+/// Apple pay button pre-defined styles
+/// We can select any one
 
 enum ApplePayButtonStyle {
   black,

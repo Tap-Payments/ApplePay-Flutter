@@ -45,8 +45,8 @@ class _MainPageState extends State<MainPage> {
   bool loading = false;
 
   Future<void> setupApplePay({
-    String sandboxKey = "pk_test_Vlk842B1EA7tDN5QbrfGjYzh",
-    String productionKey = "pk_live_UYnihb8dtBXm9fDSw1kFlPQA",
+    String sandboxKey = "pk_test_Vlk842B1EA7tDN5Qbr*****",
+    String productionKey = "pk_live_UYnihb8dtBXm9fDSw1k*****",
     required SdkMode sdkMode,
   }) async {
     TapApplePayFlutter.setupApplePayConfiguration(
@@ -158,21 +158,31 @@ class _MainPageState extends State<MainPage> {
                       });
                     }
                   },
-                  keyboardType:
-                      const TextInputType.numberWithOptions(decimal: true),
+                  keyboardType: const TextInputType.numberWithOptions(
+                    decimal: true,
+                  ),
                   inputFormatters: <TextInputFormatter>[
-                    FilteringTextInputFormatter.allow(RegExp(r"[0-9.]")),
+                    FilteringTextInputFormatter.allow(
+                      RegExp(r"[0-9.]"),
+                    ),
                   ],
                   decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.black, width: 0.5),
+                    border: OutlineInputBorder(),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Colors.black,
+                        width: 0.5,
                       ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.black, width: 0.5),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Colors.black,
+                        width: 0.5,
                       ),
-                      labelText: "Amount",
-                      hintText: "Enter Amount"),
+                    ),
+                    labelText: "Amount",
+                    hintText: "Enter Amount",
+                  ),
                 ),
               ),
               const SizedBox(
@@ -181,9 +191,15 @@ class _MainPageState extends State<MainPage> {
               Container(
                 height: 50,
                 decoration: BoxDecoration(
-                    border: Border.all(color: Colors.black, width: 0.5)),
+                  border: Border.all(
+                    color: Colors.black,
+                    width: 0.5,
+                  ),
+                ),
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 8,
+                  ),
                   child: DropdownButton<TapCurrencyCode>(
                     items: currencyList.map((TapCurrencyCode value) {
                       return DropdownMenuItem<TapCurrencyCode>(
@@ -255,7 +271,6 @@ class _MainPageState extends State<MainPage> {
                       applePayButtonType: ApplePayButtonType.appleLogoOnly,
                       applePayButtonStyle: ApplePayButtonStyle.black,
                       onPress: () {
-                        debugPrint("Apple Button Clicked");
                         if (tokenType == TokenType.tapToken) {
                           getTapToken();
                         } else {

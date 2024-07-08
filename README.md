@@ -11,7 +11,7 @@ In the  `pubspec.yaml`  of your flutter project, add the following dependency:
 
 dependencies:
 ```dart
-  tap_apple_pay_flutter: 1.0.2
+  tap_apple_pay_flutter: 1.0.3
 ```
 In your library add the following import:
 ```dart

@@ -29,9 +29,6 @@ class TapApplePayFlutter {
     if (defaultTargetPlatform == TargetPlatform.android) {
       throw Exception('Not available for Android');
     }
-
-    debugPrint("Configuration for apple pay token >>>>> $config");
-
     try {
       dynamic result = await _channel.invokeMethod<Map<Object?, Object?>>(
         'generateApplePayToken',
