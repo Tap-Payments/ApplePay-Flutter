@@ -31,8 +31,10 @@ public class TapApplePayFlutterPlugin: NSObject, FlutterPlugin {
              TapApplePay.sdkMode = .production
          }
 
-         TapApplePay.setupTapMerchantApplePay(merchantKey: SecretKey.init(sandbox: argumentsDictionary?["sandboxKey"] as? String ?? "pk_test_Vlk842B1EA7tDN5QbrfGjYzh",
-                                         production: argumentsDictionary?["productionKey"] as? String ?? "pk_live_UYnihb8dtBXm9fDSw1kFlPQA")) {
+         TapApplePay.setupTapMerchantApplePay(merchantKey:
+                                                SecretKey.init(sandbox: argumentsDictionary?["sandboxKey"] as? String ?? "",
+                                                                          production: argumentsDictionary?["productionKey"] as? String ?? ""),
+                                              merchantID: argumentsDictionary?["merchantId"] as? String ?? "merchant.tap.gosell") {
 
              result(["success":true,"data":""])
              } onErrorOccured: { error in
@@ -41,7 +43,7 @@ public class TapApplePayFlutterPlugin: NSObject, FlutterPlugin {
              }
 
        case "generateApplePayToken":
-           tapApplePay.authorizePayment(in:.init(), for: generateApplePayRequest(with: argumentsDictionary)) { [weak self] (token) in
+           tapApplePay.authorizePayment(for: generateApplePayRequest(with: argumentsDictionary)) { [weak self] (token) in
                result(["success":true,"data":token.stringAppleToken ?? ""])
 
                } onErrorOccured: { error in
@@ -52,7 +54,7 @@ public class TapApplePayFlutterPlugin: NSObject, FlutterPlugin {
 
        case "generateTapApplePayToken":
 
-           tapApplePay.authorizePayment(in:.init(),for: generateApplePayRequest(with: argumentsDictionary)) { [weak self] (token) in
+           tapApplePay.authorizePayment(for: generateApplePayRequest(with: argumentsDictionary)) { [weak self] (token) in
 
                self?.tapApplePay.createTapToken(for: token, onTokenReady: { tapToken in
 
@@ -115,7 +117,12 @@ public class TapApplePayFlutterPlugin: NSObject, FlutterPlugin {
                })
              }
 
-         myTapApplePayRequest.build(paymentNetworks: allowedNetworks, paymentItems: [], paymentAmount:argumentsDictionary?["amount"] as? Double ?? 1, currencyCode: TapCurrencyCode(appleRawValue: argumentsDictionary?["transactionCurrency"] as? String ?? "USD") ?? .USD,merchantID:argumentsDictionary?["merchantId"] as? String ?? "merchant.tap.gosell", merchantCapabilities: allowedCapabilities)
+         myTapApplePayRequest.build(paymentNetworks: allowedNetworks,
+                                    paymentItems: [],
+                                    paymentAmount: argumentsDictionary?["amount"] as? Double ?? 1,
+                                    currencyCode: TapCurrencyCode(appleRawValue: argumentsDictionary?["transactionCurrency"] as? String ?? "USD") ?? .USD,
+                                    applePayMerchantID: argumentsDictionary?["applePayMerchantId"] as? String ?? "",
+                                    merchantCapabilities: allowedCapabilities)
 
          return myTapApplePayRequest
 

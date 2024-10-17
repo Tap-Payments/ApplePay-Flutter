@@ -53,6 +53,7 @@ class _MainPageState extends State<MainPage> {
       sandboxKey: sandboxKey,
       productionKey: productionKey,
       sdkMode: widget.sdkMode,
+      merchantId: '',
     );
     try {
       setState(() {

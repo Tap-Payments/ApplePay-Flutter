@@ -36,7 +36,7 @@ class TapApplePayFlutter {
           "transactionCurrency": config.transactionCurrency.name,
           "allowedCardNetworks":
               config.allowedCardNetworks.map((e) => e.name).toList(),
-          "merchantId": config.applePayMerchantId,
+          "applePayMerchantId": config.applePayMerchantId,
           "amount": config.amount,
           "merchantCapabilities":
               config.merchantCapabilities.map((e) => e.name).toList()
@@ -79,11 +79,13 @@ class TapApplePayFlutter {
     required String sandboxKey,
     required String productionKey,
     required SdkMode sdkMode,
+    required String? merchantId,
   }) {
     _setupApplePayConfiguration = {
       "sandboxKey": sandboxKey,
       "productionKey": productionKey,
       "environmentMode": sdkMode.name,
+      "merchantId": merchantId ?? "",
     };
   }
 

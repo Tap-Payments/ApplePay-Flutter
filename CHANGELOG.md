@@ -1,3 +1,7 @@
+## 1.0.4 - 2024-10-16
+
+* Updated iOS version to 1.0.25.
+
 ## 1.0.3 - 2024-07-08
 
 * Updated iOS version to 1.0.23.
