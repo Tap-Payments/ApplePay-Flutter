@@ -15,7 +15,7 @@ Accept apple pay payments in Flutter.
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
-  s.dependency 'TapApplePayKit-iOS', '1.0.25'
+  s.dependency 'TapApplePayKit-iOS', '1.0.26'
   s.platform = :ios, '13.0'
 
   # Flutter.framework does not contain a i386 slice.
