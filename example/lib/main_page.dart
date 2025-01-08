@@ -88,6 +88,7 @@ class _MainPageState extends State<MainPage> {
             MerchantCapabilities.ThreeDS,
             MerchantCapabilities.Debit,
             MerchantCapabilities.Credit,
+            MerchantCapabilities.EMV,
           ],
         ),
       );
@@ -119,6 +120,7 @@ class _MainPageState extends State<MainPage> {
             MerchantCapabilities.ThreeDS,
             MerchantCapabilities.Debit,
             MerchantCapabilities.Credit,
+            MerchantCapabilities.EMV,
           ],
         ),
       );

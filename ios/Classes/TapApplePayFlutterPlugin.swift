@@ -113,6 +113,8 @@ public class TapApplePayFlutterPlugin: NSObject, FlutterPlugin {
                    allowedCapabilities.insert(.credit)
                  }else if capabilityString.lowercased() == "debit" {
                    allowedCapabilities.insert(.debit)
+                 } else if capabilityString.lowercased() == "emv" {
+                     allowedCapabilities.insert(.emv)
                  }
                })
              }
