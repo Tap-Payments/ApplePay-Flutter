@@ -60,7 +60,7 @@ class TapApplePayFlutter {
           "transactionCurrency": config.transactionCurrency.name,
           "allowedCardNetworks":
               config.allowedCardNetworks.map((e) => e.name).toList(),
-          "merchantId": config.applePayMerchantId,
+          "applePayMerchantId": config.applePayMerchantId,
           "amount": config.amount,
           "merchantCapabilities":
               config.merchantCapabilities.map((e) => e.name).toList()
