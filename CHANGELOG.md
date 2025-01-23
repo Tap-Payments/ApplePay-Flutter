@@ -1,3 +1,11 @@
+## 1.0.28 - 2024-01-13
+
+* Rename merchantId to applePayMerchantId for clarity in configuration.
+
+## 1.0.27 - 2024-01-08
+
+* Updated iOS version to 1.0.27.
+
 ## 1.0.26 - 2024-11-21
 
 * Updated iOS version to 1.0.26.
