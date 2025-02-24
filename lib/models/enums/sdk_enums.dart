@@ -23,7 +23,6 @@ enum MerchantCapabilities {
   ThreeDS,
   Credit,
   Debit,
-  EMV,
 }
 
 /// SDK modes
