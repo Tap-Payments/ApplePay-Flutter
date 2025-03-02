@@ -1,3 +1,12 @@
+## 1.0.30 - 2025-03-02
+
+* Updated iOS version to 1.0.29.
+* Update cancellation of payment callback.
+
+## 1.0.29 - 2025-02-25
+
+* Updated iOS version to 1.0.28.
+
 ## 1.0.28 - 2024-01-13
 
 * Rename merchantId to applePayMerchantId for clarity in configuration.
