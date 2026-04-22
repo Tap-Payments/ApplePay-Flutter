@@ -11,7 +11,7 @@ In the  `pubspec.yaml`  of your flutter project, add the following dependency:
 
 dependencies:
 ```dart
-  tap_apple_pay_flutter: 1.0.3
+  tap_apple_pay_flutter: 1.0.32
 ```
 In your library add the following import:
 ```dart
@@ -62,6 +62,7 @@ Future<void> setupApplePay(
       sandboxKey: sandboxKey,
       productionKey: productionKey,
       sdkMode: sdkMode,
+      applePayButtonRadius: 50, // Optional. Corner radius of the Apple Pay button. Defaults to 0 (square corners).
     );
     try {
 	  // Now we call a public interface provided by Apple pay flutter sdk.
@@ -86,6 +87,16 @@ setupApplePay(
 	sdkMode: widget.sdkMode,
 );
 ```
+
+### `setupApplePayConfiguration` parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `sandboxKey` | `String` | Yes | — | Testing key provided by Tap upon registering your bundle ID |
+| `productionKey` | `String` | Yes | — | Production key provided by Tap upon registering your bundle ID |
+| `sdkMode` | `SdkMode` | Yes | — | `SdkMode.sandbox` or `SdkMode.production` |
+| `merchantId` | `String?` | No | `""` | Your Apple Pay merchant identifier |
+| `applePayButtonRadius` | `int` | No | `0` | Corner radius of the Apple Pay button in points. Use `0` for square corners, or any positive value (e.g. `50`) for rounded corners |
 
 ## Adding the Apple Pay widget
 

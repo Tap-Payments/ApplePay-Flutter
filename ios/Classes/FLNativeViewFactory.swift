@@ -64,7 +64,7 @@ class FLNativeView: NSObject, FlutterPlatformView {
 
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(300)){
             self.tapApplePayButton = TapApplePayButton(frame: .init(x: 0, y: 0, width: self._view.frame.width, height: self._view.frame.height))
-           
+            self.tapApplePayButton.cornerRadius = self._args?["applePayButtonRadius"] as? CGFloat ?? 0
             self.tapApplePayButton.setup(buttonType:TapApplePayButtonType(rawValue: self._args?["buttonType"] as? String ?? "plain") ?? .AppleLogoOnly,buttonStyle: .init(rawValue: self._args?["buttonStyle"] as? String ?? "black") ?? .Black)
            
             self._view.addSubview(self.tapApplePayButton)

@@ -75,17 +75,18 @@ class TapApplePayFlutter {
   static late Map<String, dynamic> _setupApplePayConfiguration;
 
   /// App configurations
-  static void setupApplePayConfiguration({
-    required String sandboxKey,
-    required String productionKey,
-    required SdkMode sdkMode,
-    required String? merchantId,
-  }) {
+  static void setupApplePayConfiguration(
+      {required String sandboxKey,
+      required String productionKey,
+      required SdkMode sdkMode,
+      required String? merchantId,
+      int applePayButtonRadius = 0}) {
     _setupApplePayConfiguration = {
       "sandboxKey": sandboxKey,
       "productionKey": productionKey,
       "environmentMode": sdkMode.name,
       "merchantId": merchantId ?? "",
+      "applePayButtonRadius": applePayButtonRadius,
     };
   }
 
@@ -182,6 +183,7 @@ class _ApplePayFlutterState extends State<_ApplePayFlutter> {
       creationParams: {
         'buttonType': buttonType,
         'buttonStyle': widget.applePayButtonStyle.name,
+        'applePayButtonRadius': TapApplePayFlutter._setupApplePayConfiguration['applePayButtonRadius'] ?? 0,
       },
       layoutDirection: TextDirection.ltr,
       creationParamsCodec: const StandardMessageCodec(),

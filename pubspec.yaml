@@ -1,6 +1,6 @@
 name: tap_apple_pay_flutter
 description: Accept apple pay payments in Flutter.
-version: 1.0.31
+version: 1.0.32
 homepage: https://github.com/Tap-Payments/ApplePay-Flutter
 
 environment:

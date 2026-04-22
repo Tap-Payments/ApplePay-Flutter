@@ -54,6 +54,7 @@ class _MainPageState extends State<MainPage> {
       productionKey: productionKey,
       sdkMode: widget.sdkMode,
       merchantId: '',
+      applePayButtonRadius: 20,
     );
     try {
       setState(() {
