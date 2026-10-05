@@ -1,3 +1,7 @@
+### 1.0.33 - 2026-10-05
+- Added `AllowedCardNetworks.JAYWAN` (UAE domestic card scheme). Requires iOS 18.4 or later; ignored on older versions.
+- Updated iOS version to 1.0.34.
+
 ### 1.0.32 - 2026-04-22
 - Fixed `applePayButtonRadius` not being passed to the native iOS button. The value set in `setupApplePayConfiguration` is now correctly applied as the `cornerRadius` of the Apple Pay button.
 

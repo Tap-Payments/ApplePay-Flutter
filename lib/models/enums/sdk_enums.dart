@@ -16,6 +16,9 @@ enum AllowedCardNetworks {
   VISA,
   VPAY,
   MADA,
+
+  /// Requires iOS 18.4 or later, ignored on older versions
+  JAYWAN,
 }
 
 /// ALL Merchant Capabilities
